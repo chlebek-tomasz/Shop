@@ -12,13 +12,13 @@ public class UserDAO {
         session.close();
     }
 
-    public void removeUser(int id) {
+    public void removeUser(Long id) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.remove(getUserById(id));
         session.close();
     }
 
-    public User getUserById(int id){
+    public User getUserById(Long id){
         Session session = HibernateUtil.getSessionFactory().openSession();
         User user = session.get(User.class, id);
         session.close();

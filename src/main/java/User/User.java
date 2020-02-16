@@ -7,11 +7,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Entity
-@Table(name = "users")
+@Table(name = "user")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int ID;
+    private Long ID;
     @Column(name = "email", unique = true, nullable = false)
     private String email;
     @Column(name = "password", nullable = false)
@@ -20,6 +20,11 @@ public class User {
     private String firstName;
     @Column(name = "lastName", nullable = false)
     private String lastName;
+    @OneToOne
+    @JoinColumn(name = "bracket_id")
+    private Bracket bracket;
+
+    public User(){}
 
     public User(String email, String password, String firstName, String lastName) {
         this.email = email;

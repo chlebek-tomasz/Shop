@@ -4,7 +4,7 @@ import Hibernate.HibernateUtil;
 import org.hibernate.Session;
 
 public class ProductDAO {
-    public void addProduct(Product product){
+    public static void addProduct(Product product){
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         session.save(product);
@@ -12,13 +12,13 @@ public class ProductDAO {
         session.close();
     }
 
-    public void removeProduct(int id){
+    public void removeProduct(Long id){
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.remove(getProductById(id));
         session.close();
     }
 
-    public Product getProductById(int id){
+    public Product getProductById(Long id){
         Session session = HibernateUtil.getSessionFactory().openSession();
         Product product = session.get(Product.class, id);
         session.close();

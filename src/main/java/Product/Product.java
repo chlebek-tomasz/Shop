@@ -1,5 +1,7 @@
 package Product;
 
+import User.Bracket;
+
 import javax.persistence.*;
 
 @Entity
@@ -7,9 +9,11 @@ import javax.persistence.*;
 public abstract class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int ID;
+    private Long ID;
     @Column(name = "name", nullable = false)
     private String name;
+    @OneToOne
+    private Category category;
     @Column(name = "description")
     private String description;
     @Column(name = "value", nullable = false)
@@ -17,8 +21,11 @@ public abstract class Product {
     @Column(name = "quantity", nullable = false)
     private int quantity;
 
-    public Product(String name, String description, double value, int quantity) {
+    public Product(){}
+
+    public Product(String name, Category category, String description, double value, int quantity) {
         this.name = name;
+        this.category = category;
         this.description = description;
         this.value = value;
         this.quantity = quantity;
@@ -31,6 +38,10 @@ public abstract class Product {
     public void setName(String name) {
         this.name = name;
     }
+
+    public Category getCategory() { return category; }
+
+    public void setCategory(Category category) { this.category = category; }
 
     public String getDescription() {
         return description;

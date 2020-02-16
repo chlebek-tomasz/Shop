@@ -7,10 +7,13 @@
     <property name="connection.url">jdbc:h2:tcp://localhost/~/test</property>
     <property name="connection.driver_class">org.h2.Driver</property>
     <property name="connection.username">sa</property>
-    <property name="hibernate.hbm2ddl.auto">update</property>
+    <property name="hibernate.hbm2ddl.auto">create-drop</property>
     <property name="show_sql">true</property>
     <property name="hibernate.dialect">org.hibernate.dialect.H2Dialect</property>
     <mapping class="User.User"/>
     <mapping class="Product.Product"/>
+    <mapping class="Product.Shoes"/>
+    <mapping class="User.Bracket"/>
+    <mapping class="Product.Category"/>
   </session-factory>
 </hibernate-configuration>
