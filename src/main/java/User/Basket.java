@@ -1,15 +1,13 @@
 package User;
 
 import Product.Product;
-import org.graalvm.compiler.core.common.type.ArithmeticOpTable;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "bracket")
-public class Bracket {
+@Table(name = "basket")
+public class Basket {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -21,8 +19,10 @@ public class Bracket {
     @Column(name = "totalValue")
     private double totalValue;
 
-    public Bracket() {
-        BracketDAO.addBracket(this);
+    public Basket(){}
+
+    public Basket(User user) {
+        BasketDAO.addBasket(this);
         this.totalValue = 0;
     }
 

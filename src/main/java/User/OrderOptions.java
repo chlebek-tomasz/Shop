@@ -1,9 +1,9 @@
 package User;
 
 public class OrderOptions {
-    public static void submitOrder(User user, Bracket bracket){
-        new Order(user, bracket);
-        BracketOptions.clearBracket(bracket);
+    public static void submitOrder(User user, Basket basket){
+        new Order(user, basket);
+        BasketOption.clearBasket(basket);
     }
 
     public static void payForTheOrder(Long orderID){
@@ -22,8 +22,8 @@ public class OrderOptions {
     public static void editOrder(Long orderID){
         Order order = OrderDAO.getOrderById(orderID);
         if(!(order.getStatus().equals("paid")) || !(order.getStatus().equals("sent"))){
-            Bracket bracket = BracketDAO.getBracketById(order.getUser().getBracket().getId());
-            bracket.setProductList(order.getProductList());
+            Basket basket = BasketDAO.getBasketById(order.getUser().getBasket().getId());
+            basket.setProductList(order.getProductList());
         }
     }
 }

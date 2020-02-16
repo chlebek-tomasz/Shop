@@ -1,34 +1,33 @@
 package User;
 
 import Hibernate.HibernateUtil;
-import Product.Product;
 import org.hibernate.Session;
 
-public class BracketDAO {
-    public static void addBracket(Bracket bracket){
+public class BasketDAO {
+    public static void addBasket(Basket basket){
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        session.save(bracket);
+        session.save(basket);
         session.getTransaction().commit();
         session.close();
     }
 
-    public static void removeBracket(Long id){
+    public static void removeBasket(Long id){
         Session session = HibernateUtil.getSessionFactory().openSession();
-        session.remove(getBracketById(id));
+        session.remove(getBasketById(id));
         session.close();
     }
 
-    public static Bracket getBracketById(Long id){
+    public static Basket getBasketById(Long id){
         Session session = HibernateUtil.getSessionFactory().openSession();
-        Bracket bracket = session.get(Bracket.class, id);
+        Basket basket = session.get(Basket.class, id);
         session.close();
-        return bracket;
+        return basket;
     }
 
-    public static void updateBracket(Bracket bracket){
+    public static void updateBasket(Basket basket){
         Session session = HibernateUtil.getSessionFactory().openSession();
-        session.update(bracket);
+        session.update(basket);
         session.close();
     }
 }

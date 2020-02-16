@@ -22,16 +22,16 @@ public class Order {
     @NotNull
     private double totalValue;
     @OneToOne
-    private Bracket bracket;
+    private Basket basket;
 
     public Order(){ }
 
-    public Order(User user, Bracket bracket) {
+    public Order(User user, Basket basket) {
         this.user = user;
-        this.bracket = bracket;
+        this.basket = basket;
         this.status = "Waiting for payment";
-        this.totalValue = bracket.getTotalValue();
-        this.productList = bracket.getProductList();
+        this.totalValue = basket.getTotalValue();
+        this.productList = basket.getProductList();
     }
 
     public User getUser() {

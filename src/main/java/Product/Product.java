@@ -1,7 +1,5 @@
 package Product;
 
-import User.Bracket;
-
 import javax.persistence.*;
 
 @Entity

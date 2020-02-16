@@ -1,11 +1,6 @@
 package User;
 
-import com.sun.istack.NotNull;
-
 import javax.persistence.*;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 @Entity
 @Table(name = "user")
@@ -22,13 +17,13 @@ public class User {
     @Column(name = "lastName", nullable = false)
     private String lastName;
     @OneToOne
-    @JoinColumn(name = "bracket_id")
-    private Bracket bracket;
+    @JoinColumn(name = "basket_id")
+    private Basket basket;
 
 
     public User(){
         UserDAO.addUser(this);
-        new Bracket(this);
+        new Basket(this);
     }
 
     public User(String email, String password, String firstName, String lastName) {
@@ -36,7 +31,7 @@ public class User {
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
-        new Bracket();
+        new Basket(this);
     }
 
     public String getEmail() {
@@ -81,8 +76,8 @@ public class User {
         }
     }
 
-    public Bracket getBracket() {
-        return bracket;
+    public Basket getBasket() {
+        return basket;
     }
 
     private String setValidLetters(String name){

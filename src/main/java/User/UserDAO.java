@@ -15,9 +15,9 @@ public class UserDAO {
     public static void removeUser(Long id) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         User user = getUserById(id);
-        Bracket bracket = user.getBracket();
+        Basket basket = user.getBasket();
         session.remove(user);
-        BracketDAO.removeBracket(bracket.getId());
+        BasketDAO.removeBasket(basket.getId());
         session.close();
     }
 
