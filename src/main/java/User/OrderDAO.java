@@ -1,33 +1,33 @@
-package Product;
+package User;
 
 import Hibernate.HibernateUtil;
 import org.hibernate.Session;
 
-public class ProductDAO {
-    public static void addProduct(Product product){
+public class OrderDAO {
+    public static void addOrder(Order order){
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        session.save(product);
+        session.save(order);
         session.getTransaction().commit();
         session.close();
     }
 
-    public static void removeProduct(Long id){
+    public static void removeOrder(Long id){
         Session session = HibernateUtil.getSessionFactory().openSession();
-        session.remove(getProductById(id));
+        session.remove(getOrderById(id));
         session.close();
     }
 
-    public static Product getProductById(Long id){
+    public static Order getOrderById(Long id){
         Session session = HibernateUtil.getSessionFactory().openSession();
-        Product product = session.get(Product.class, id);
+        Order order = session.get(Order.class, id);
         session.close();
-        return product;
+        return order;
     }
 
-    public static void updateProduct(Product product){
+    public static void updateOrder(Order order){
         Session session = HibernateUtil.getSessionFactory().openSession();
-        session.update(product);
+        session.update(order);
         session.close();
     }
 }

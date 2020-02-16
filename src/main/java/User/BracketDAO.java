@@ -1,36 +1,34 @@
 package User;
 
 import Hibernate.HibernateUtil;
+import Product.Product;
 import org.hibernate.Session;
 
-public class UserDAO {
-    public static void addUser(User user) {
+public class BracketDAO {
+    public static void addBracket(Bracket bracket){
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        session.saveOrUpdate(user);
+        session.save(bracket);
         session.getTransaction().commit();
         session.close();
     }
 
-    public static void removeUser(Long id) {
+    public static void removeBracket(Long id){
         Session session = HibernateUtil.getSessionFactory().openSession();
-        User user = getUserById(id);
-        Bracket bracket = user.getBracket();
-        session.remove(user);
-        BracketDAO.removeBracket(bracket.getId());
+        session.remove(getBracketById(id));
         session.close();
     }
 
-    public static User getUserById(Long id){
+    public static Bracket getBracketById(Long id){
         Session session = HibernateUtil.getSessionFactory().openSession();
-        User user = session.get(User.class, id);
+        Bracket bracket = session.get(Bracket.class, id);
         session.close();
-        return user;
+        return bracket;
     }
 
-    public static void updateUser(User user){
+    public static void updateBracket(Bracket bracket){
         Session session = HibernateUtil.getSessionFactory().openSession();
-        session.update(user);
+        session.update(bracket);
         session.close();
     }
 }

@@ -1,32 +1,38 @@
 package User;
 
 import Product.Product;
-import org.graalvm.compiler.core.common.type.ArithmeticOpTable;
+import com.sun.istack.NotNull;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "bracket")
-public class Bracket {
+@Table
+public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+    @NotNull
+    private String status;
     @OneToMany
     private List<Product> productList;
-    @Column(name = "totalValue")
+    @NotNull
     private double totalValue;
+    @OneToOne
+    private Bracket bracket;
 
-    public Bracket() {
-        BracketDAO.addBracket(this);
-        this.totalValue = 0;
+    public Order(){ }
+
+    public Order(User user, Bracket bracket) {
+        this.user = user;
+        this.bracket = bracket;
+        this.status = "Waiting for payment";
+        this.totalValue = bracket.getTotalValue();
+        this.productList = bracket.getProductList();
     }
-
-    public Long getId(){ return id; }
 
     public User getUser() {
         return user;
@@ -34,6 +40,14 @@ public class Bracket {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public List<Product> getProductList() {

@@ -15,5 +15,6 @@
     <mapping class="Product.Shoes"/>
     <mapping class="User.Bracket"/>
     <mapping class="Product.Category"/>
+    <mapping class="User.Order"/>
   </session-factory>
 </hibernate-configuration>

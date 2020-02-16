@@ -3,6 +3,7 @@ package User;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -24,13 +25,18 @@ public class User {
     @JoinColumn(name = "bracket_id")
     private Bracket bracket;
 
-    public User(){}
+
+    public User(){
+        UserDAO.addUser(this);
+        new Bracket(this);
+    }
 
     public User(String email, String password, String firstName, String lastName) {
         this.email = email;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
+        new Bracket();
     }
 
     public String getEmail() {
@@ -73,6 +79,10 @@ public class User {
             lastName = setValidLetters(lastName);
             this.lastName = lastName;
         }
+    }
+
+    public Bracket getBracket() {
+        return bracket;
     }
 
     private String setValidLetters(String name){
