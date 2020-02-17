@@ -1,6 +1,7 @@
 package User;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "user")
@@ -19,11 +20,11 @@ public class User {
     @OneToOne
     @JoinColumn(name = "basket_id")
     private Basket basket;
+    @OneToMany
+    private List<Order> order;
 
 
     public User(){
-        UserData.addUser(this);
-        new Basket(this);
     }
 
     public User(String email, String password, String firstName, String lastName) {
@@ -31,7 +32,9 @@ public class User {
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
-        new Basket(this);
+        this.basket = new Basket();
+        BasketData.addBasket(this.basket);
+        UserData.addUser(this);
     }
 
     public String getEmail() {
@@ -79,6 +82,8 @@ public class User {
     public Basket getBasket() {
         return basket;
     }
+
+    private void setBasket(Basket basket){this.basket = basket;}
 
     private String setValidLetters(String name){
         int letters = name.length();

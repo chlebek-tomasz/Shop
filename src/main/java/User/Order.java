@@ -19,19 +19,20 @@ public class Order {
     private String status;
     @OneToMany
     private List<Product> productList;
+    @ManyToMany
+    @JoinTable(name = "ORDER_PRODUCT", joinColumns = {@JoinColumn(referencedColumnName = "ID")}
+            ,inverseJoinColumns = {@JoinColumn(referencedColumnName = "ID")})
+    private List<Order> orderList;
     @NotNull
     private double totalValue;
-    @OneToOne
-    private Basket basket;
 
     public Order(){ }
 
-    public Order(User user, Basket basket) {
+    public Order(User user) {
         this.user = user;
-        this.basket = basket;
         this.status = "Waiting for payment";
-        this.totalValue = basket.getTotalValue();
-        this.productList = basket.getProductList();
+        this.totalValue = user.getBasket().getTotalValue();
+        this.productList = user.getBasket().getProductList();
     }
 
     public User getUser() {

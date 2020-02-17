@@ -1,6 +1,10 @@
 package Product;
 
+import User.Basket;
+import User.Order;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "Product")
@@ -18,6 +22,10 @@ public abstract class Product {
     private double value;
     @Column(name = "quantity", nullable = false)
     private int quantity;
+    @ManyToMany
+    private List<Basket> basketList;
+    @ManyToMany
+    private List<Order> orderList;
 
     public Product(){}
 
@@ -27,6 +35,7 @@ public abstract class Product {
         this.description = description;
         this.value = value;
         this.quantity = quantity;
+        ProductData.addProduct(this);
     }
 
     public String getName() {

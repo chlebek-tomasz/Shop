@@ -2,7 +2,7 @@ package User;
 
 public class OrderOptions {
     public static void submitOrder(User user, Basket basket){
-        new Order(user, basket);
+        new Order(user);
         BasketOption.clearBasket(basket);
     }
 

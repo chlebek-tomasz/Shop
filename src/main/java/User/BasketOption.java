@@ -5,7 +5,8 @@ import Product.Product;
 import java.util.List;
 
 public class BasketOption {
-    public static void addProductToBasket(Basket basket, Product product){
+    public static void addProductToBasket(Long basketID, Product product){
+        Basket basket = BasketData.getBasketById(basketID);
         List<Product> productList = basket.getProductList();
         productList.add(product);
         basket.setProductList(productList);
@@ -17,6 +18,13 @@ public class BasketOption {
         productList.remove(product);
         basket.setProductList(productList);
         BasketData.updateBasket(basket);
+    }
+
+    public static void showBasket(Basket basket){
+        List<Product> productList = basket.getProductList();
+        for(Product p : productList){
+            System.out.println(p.toString());
+        }
     }
 
     public static void clearBasket(Basket basket){

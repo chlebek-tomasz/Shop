@@ -22,6 +22,7 @@ public class Category {
 
     public Category(String categoryName){
         this.categoryName = categoryName;
+        CategoryData.addCategory(this);
     }
 
     public String getCategoryName() {

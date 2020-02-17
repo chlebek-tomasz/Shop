@@ -12,19 +12,15 @@ public class Basket {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @OneToOne
-    @JoinColumn(name = "user_id")
     private User user;
-    @OneToMany
+    @ManyToMany
+    @JoinTable(name = "BASKET_PRODUCT", joinColumns = {@JoinColumn(referencedColumnName = "ID")},
+            inverseJoinColumns = {@JoinColumn(referencedColumnName = "ID")})
     private List<Product> productList;
     @Column(name = "totalValue")
-    private double totalValue;
+    private double totalValue = 0;
 
     public Basket(){}
-
-    public Basket(User user) {
-        BasketData.addBasket(this);
-        this.totalValue = 0;
-    }
 
     public Long getId(){ return id; }
 
