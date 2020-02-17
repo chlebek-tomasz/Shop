@@ -27,7 +27,7 @@ public class BasketData {
 
     public static void updateBasket(Basket basket){
         Session session = HibernateUtil.getSessionFactory().openSession();
-        session.update(basket);
+        session.saveOrUpdate(basket);
         session.close();
     }
 }

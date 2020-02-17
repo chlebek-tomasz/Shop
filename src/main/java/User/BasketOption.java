@@ -1,36 +1,33 @@
 package User;
 
-import Hibernate.HibernateUtil;
 import Product.Product;
-import org.h2.command.dml.Query;
-import org.hibernate.Session;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class BasketOption {
-    public static void addProductToBasket(Long basketID, Product product){
+    public static void addProductToBasket(Long basketID, Product product) {
         Basket basket = BasketData.getBasketById(basketID);
-        List<Product> productList = basket.getProductList();
-        productList.add(product);
-        basket.setProductList(productList);
+        basket.getProductSet().add(product);
         BasketData.updateBasket(basket);
     }
 
     public static void removeProductFromBasket(Basket basket, Product product){
-        List<Product> productList = basket.getProductList();
-        productList.remove(product);
-        basket.setProductList(productList);
+        Set<Product> productSet = basket.getProductSet();
+        productSet.remove(product);
+        basket.setProductSet(productSet);
         BasketData.updateBasket(basket);
     }
 
     public static void showBasket(Basket basket){
-        List<Product> productList = basket.getProductList();
-        for(Product p : productList){
+        Set<Product> productSet = basket.getProductSet();
+        for(Product p : productSet){
             System.out.println(p.toString());
         }
     }
 
     public static void clearBasket(Basket basket){
-        basket.setProductList(null);
+        basket.setProductSet(null);
     }
 }

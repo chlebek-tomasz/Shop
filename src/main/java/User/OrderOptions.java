@@ -23,7 +23,7 @@ public class OrderOptions {
         Order order = OrderData.getOrderById(orderID);
         if(!(order.getStatus().equals("paid")) || !(order.getStatus().equals("sent"))){
             Basket basket = BasketData.getBasketById(order.getUser().getBasket().getId());
-            basket.setProductList(order.getProductList());
+            basket.setProductSet(order.getProductSet());
         }
     }
 }

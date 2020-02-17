@@ -3,7 +3,10 @@ package User;
 import Product.Product;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "basket")
@@ -17,7 +20,7 @@ public class Basket {
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "BASKET_PRODUCT", joinColumns = {@JoinColumn(referencedColumnName = "ID")},
             inverseJoinColumns = {@JoinColumn(referencedColumnName = "ID")})
-    private List<Product> productList;
+    private Set<Product> productSet = new HashSet<Product>();
     @Column(name = "totalValue")
     private double totalValue = 0;
 
@@ -33,12 +36,12 @@ public class Basket {
         this.user = user;
     }
 
-    public List<Product> getProductList() {
-        return productList;
+    public Set<Product> getProductSet() {
+        return productSet;
     }
 
-    public void setProductList(List<Product> productList) {
-        this.productList = productList;
+    public void setProductSet(Set<Product> productSet) {
+        this.productSet = productSet;
     }
 
     public double getTotalValue() {

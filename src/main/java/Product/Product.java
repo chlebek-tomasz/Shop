@@ -4,7 +4,7 @@ import User.Basket;
 import User.Order;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.*;
 
 @Entity
 @Table(name = "Product")
@@ -22,10 +22,10 @@ public abstract class Product {
     private double value;
     @Column(name = "quantity", nullable = false)
     private int quantity;
-    @ManyToMany(fetch = FetchType.EAGER)
-    private List<Basket> basketList;
-    @ManyToMany(fetch = FetchType.EAGER)
-    private List<Order> orderList;
+    @ManyToMany(mappedBy = "productSet", fetch = FetchType.EAGER)
+    private Set<Basket> basketSet = new HashSet<Basket>();
+    @ManyToMany(mappedBy = "productSet", fetch = FetchType.EAGER)
+    private Set<Order> orderSet = new HashSet<Order>();
 
     public Product(){}
 

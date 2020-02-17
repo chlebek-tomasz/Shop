@@ -10,9 +10,9 @@ public class Shop {
         Product product2 = new Shoes("Nike VaporMax", category, "The best shoes ever", 100, 20,41);
         Product product3 = new Shoes("Adidas", category, "The best shoes ever", 100, 20,41);
         User user = new User("email@gmail.com", "abcd", "Fname", "Lname");
-//        BasketOption.addProductToBasket(user.getBasket().getId(), product1);
-//        BasketOption.addProductToBasket(user.getBasket().getId(), product2);
-//        BasketOption.addProductToBasket(user.getBasket().getId(), product3);
+        BasketOption.addProductToBasket(user.getBasket().getId(), product1);
+        BasketOption.addProductToBasket(user.getBasket().getId(), product2);
+        BasketOption.addProductToBasket(user.getBasket().getId(), product3);
 //        BasketOption.showBasket(user.getBasket());
 //        BasketOption.removeProductFromBasket(user.getBasket(), product1);
 //        BasketOption.showBasket(user.getBasket());
