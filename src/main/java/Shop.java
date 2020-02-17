@@ -8,6 +8,6 @@ public class Shop {
         Category category = new Category("Shoes");
         CategoryDAO.addCategory(category);
         Product product = new Shoes("Nike AirMax", category, "The best shoes ever", 100, 20,41);
-        ProductDAO.addProduct(product);
+        ProductData.addProduct(product);
     }
 }

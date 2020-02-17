@@ -22,7 +22,7 @@ public class User {
 
 
     public User(){
-        UserDAO.addUser(this);
+        UserData.addUser(this);
         new Basket(this);
     }
 

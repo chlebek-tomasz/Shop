@@ -22,7 +22,7 @@ public class Basket {
     public Basket(){}
 
     public Basket(User user) {
-        BasketDAO.addBasket(this);
+        BasketData.addBasket(this);
         this.totalValue = 0;
     }
 

@@ -7,22 +7,22 @@ public class OrderOptions {
     }
 
     public static void payForTheOrder(Long orderID){
-        Order order = OrderDAO.getOrderById(orderID);
+        Order order = OrderData.getOrderById(orderID);
         order.setStatus("paid");
-        OrderDAO.updateOrder(order);
+        OrderData.updateOrder(order);
     }
 
     public static void declineOrder(Long orderID){
-        Order order = OrderDAO.getOrderById(orderID);
+        Order order = OrderData.getOrderById(orderID);
         if(!(order.getStatus().equals("paid")) || !(order.getStatus().equals("sent"))){
-            OrderDAO.removeOrder(orderID);
+            OrderData.removeOrder(orderID);
         }
     }
 
     public static void editOrder(Long orderID){
-        Order order = OrderDAO.getOrderById(orderID);
+        Order order = OrderData.getOrderById(orderID);
         if(!(order.getStatus().equals("paid")) || !(order.getStatus().equals("sent"))){
-            Basket basket = BasketDAO.getBasketById(order.getUser().getBasket().getId());
+            Basket basket = BasketData.getBasketById(order.getUser().getBasket().getId());
             basket.setProductList(order.getProductList());
         }
     }

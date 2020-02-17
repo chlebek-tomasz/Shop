@@ -3,7 +3,7 @@ package User;
 import Hibernate.HibernateUtil;
 import org.hibernate.Session;
 
-public class BasketDAO {
+public class BasketData {
     public static void addBasket(Basket basket){
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();

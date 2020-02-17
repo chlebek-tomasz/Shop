@@ -3,7 +3,7 @@ package Product;
 import Hibernate.HibernateUtil;
 import org.hibernate.Session;
 
-public class CategoryDAO {
+public class CategoryData {
     public static void addCategory(Category category){
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
