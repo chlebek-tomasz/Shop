@@ -5,7 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Product")
 public class Shoes extends Product{
     @Column(name = "size", nullable = false)
     private double size;

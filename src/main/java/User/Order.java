@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table
+@Table(name = "Order_table")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -17,12 +17,10 @@ public class Order {
     private User user;
     @NotNull
     private String status;
-    @OneToMany
-    private List<Product> productList;
     @ManyToMany
     @JoinTable(name = "ORDER_PRODUCT", joinColumns = {@JoinColumn(referencedColumnName = "ID")}
             ,inverseJoinColumns = {@JoinColumn(referencedColumnName = "ID")})
-    private List<Order> orderList;
+    private List<Product> productList;
     @NotNull
     private double totalValue;
 

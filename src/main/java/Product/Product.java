@@ -22,9 +22,9 @@ public abstract class Product {
     private double value;
     @Column(name = "quantity", nullable = false)
     private int quantity;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<Basket> basketList;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<Order> orderList;
 
     public Product(){}

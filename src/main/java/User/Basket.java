@@ -11,9 +11,10 @@ public class Basket {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Transient
     @OneToOne
     private User user;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "BASKET_PRODUCT", joinColumns = {@JoinColumn(referencedColumnName = "ID")},
             inverseJoinColumns = {@JoinColumn(referencedColumnName = "ID")})
     private List<Product> productList;
