@@ -12,15 +12,15 @@ import java.util.Set;
 import Product.*;
 
 public class BasketOption {
-    public static void addProductToBasket(Long basketID, Product product) {
-        Basket basket = BasketData.getBasketById(basketID);
+    public static void addProductToBasket(Basket basket, Product product) {
         Set<Product> newProductSet = basket.getProductSet();
         newProductSet.add(product);
         basket.setProductSet(newProductSet);
+        basket.setTotalValue(basket.getTotalValue()+product.getValue());
         BasketData.updateBasket(basket);
     }
 
-    public static void removeProductFromBasket(Long basketID, Product product){
+    public static void removeProductFromBasket(Basket basket, Product product){
         String hql = "select productSet from Basket";
         Session session = HibernateUtil.getSessionFactory().openSession();
         Query query = session.createQuery(hql);
@@ -33,20 +33,15 @@ public class BasketOption {
             }
         }
         session.close();
-        Basket basket = BasketData.getBasketById(basketID);
         basket.setProductSet(productSet);
+        basket.setTotalValue(basket.getTotalValue()-product.getValue());
         BasketData.updateBasket(basket);
     }
 
-    public static void showBasket(Long basketID){
-        Basket basket = BasketData.getBasketById(basketID);
-        Set<Product> productSet = basket.getProductSet();
-        for(Product p : productSet){
-            System.out.println(p.toString());
-        }
-    }
-
     public static void clearBasket(Basket basket){
-        basket.setProductSet(null);
+        Set<Product> tempProductSet = basket.getProductSet();
+        tempProductSet.clear();
+        basket.setProductSet(tempProductSet);
+        BasketData.updateBasket(basket);
     }
 }
