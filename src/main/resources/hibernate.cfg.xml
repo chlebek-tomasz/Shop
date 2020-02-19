@@ -16,5 +16,6 @@
     <mapping class="User.Basket"/>
     <mapping class="Product.Category"/>
     <mapping class="User.Order"/>
+    <mapping class="User.UserSettings"/>
   </session-factory>
 </hibernate-configuration>

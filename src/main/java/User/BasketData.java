@@ -14,7 +14,9 @@ public class BasketData {
 
     public static void removeBasket(Long id){
         Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
         session.remove(getBasketById(id));
+        session.getTransaction().commit();
         session.close();
     }
 
@@ -27,7 +29,9 @@ public class BasketData {
 
     public static void updateBasket(Basket basket){
         Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
         session.saveOrUpdate(basket);
+        session.getTransaction().commit();
         session.close();
     }
 }

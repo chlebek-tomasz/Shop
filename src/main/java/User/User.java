@@ -37,6 +37,14 @@ public class User {
         UserData.addUser(this);
     }
 
+    public Long getID() {
+        return ID;
+    }
+
+    public void setID(Long ID) {
+        this.ID = ID;
+    }
+
     public String getEmail() {
         return email;
     }

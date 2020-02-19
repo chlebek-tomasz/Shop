@@ -1,5 +1,8 @@
 package User;
 
+import Hibernate.HibernateUtil;
+import org.hibernate.Session;
+
 public class UserSettings {
     public static void changePassword(User user, String oldPassword, String newPassword) {
         if(user.getPassword().equals(oldPassword)){

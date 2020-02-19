@@ -14,11 +14,13 @@ public class UserData {
 
     public static void removeUser(Long id) {
         Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
         User user = getUserById(id);
         Basket basket = user.getBasket();
         session.remove(user);
-        BasketData.removeBasket(basket.getId());
+        session.getTransaction().commit();
         session.close();
+        BasketData.removeBasket(basket.getId());
     }
 
     public static User getUserById(Long id){
@@ -30,7 +32,9 @@ public class UserData {
 
     public static void updateUser(User user){
         Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
         session.update(user);
+        session.getTransaction().commit();
         session.close();
     }
 }

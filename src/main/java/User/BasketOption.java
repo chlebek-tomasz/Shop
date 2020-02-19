@@ -9,7 +9,9 @@ import java.util.Set;
 public class BasketOption {
     public static void addProductToBasket(Long basketID, Product product) {
         Basket basket = BasketData.getBasketById(basketID);
-        basket.getProductSet().add(product);
+        Set<Product> newProductSet = basket.getProductSet();
+        newProductSet.add(product);
+        basket.setProductSet(newProductSet);
         BasketData.updateBasket(basket);
     }
 
