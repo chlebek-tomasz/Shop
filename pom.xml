@@ -26,6 +26,12 @@
             <artifactId>h2</artifactId>
             <version>1.4.200</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.hibernate.hql</groupId>
+            <artifactId>hibernate-hql-parser</artifactId>
+            <version>1.5.0.Final</version>
+        </dependency>
     </dependencies>
 
 

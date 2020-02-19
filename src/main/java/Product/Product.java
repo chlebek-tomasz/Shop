@@ -38,6 +38,10 @@ public abstract class Product {
         ProductData.addProduct(this);
     }
 
+    public Long getID() {
+        return ID;
+    }
+
     public String getName() {
         return name;
     }

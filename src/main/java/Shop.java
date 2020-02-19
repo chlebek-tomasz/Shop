@@ -17,10 +17,10 @@ public class Shop {
         //UserData.removeUser(user.getID());
         BasketOption.addProductToBasket(user.getBasket().getId(), product1);
         BasketOption.addProductToBasket(user.getBasket().getId(), product2);
-//        BasketOption.addProductToBasket(user.getBasket().getId(), product3);
-//        BasketOption.showBasket(user.getBasket());
-//        BasketOption.removeProductFromBasket(user.getBasket(), product1);
-//        BasketOption.showBasket(user.getBasket());
+        BasketOption.addProductToBasket(user.getBasket().getId(), product3);
+        //BasketOption.showBasket(user.getID());
+        BasketOption.removeProductFromBasket(user.getBasket().getId(), product1);
+        //BasketOption.showBasket(user.getID());
 //        OrderOptions.payForTheOrder(user.getBasket().getId());
 //        BasketOption.showBasket(user.getBasket());
 
