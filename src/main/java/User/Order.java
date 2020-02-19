@@ -4,9 +4,7 @@ import Product.Product;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -23,7 +21,7 @@ public class Order {
     @ManyToMany
     @JoinTable(name = "ORDER_PRODUCT", joinColumns = {@JoinColumn(referencedColumnName = "ID")}
             ,inverseJoinColumns = {@JoinColumn(referencedColumnName = "ID")})
-    private Set<Product> productSet = new HashSet<Product>();
+    private Set<Product> orderProductSet = new HashSet<Product>();
     @NotNull
     private double totalValue;
 
@@ -33,7 +31,8 @@ public class Order {
         this.user = user;
         this.status = "Waiting for payment";
         this.totalValue = user.getBasket().getTotalValue();
-        this.productSet = user.getBasket().getProductSet();
+        this.orderProductSet = user.getBasket().getProductSet();
+        OrderData.addOrder(this);
     }
 
     public User getUser() {
@@ -52,12 +51,12 @@ public class Order {
         this.status = status;
     }
 
-    public Set<Product> getProductSet() {
-        return productSet;
+    public Set<Product> getOrderProductSet() {
+        return orderProductSet;
     }
 
-    public void setProductSet(Set<Product> productSet) {
-        this.productSet = productSet;
+    public void setOrderProductSet(Set<Product> productSet) {
+        this.orderProductSet = productSet;
     }
 
     public double getTotalValue() {

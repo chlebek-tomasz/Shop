@@ -42,6 +42,7 @@ public class BasketOption {
         Set<Product> tempProductSet = basket.getProductSet();
         tempProductSet.clear();
         basket.setProductSet(tempProductSet);
+        basket.setTotalValue(0);
         BasketData.updateBasket(basket);
     }
 }

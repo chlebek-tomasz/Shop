@@ -1,9 +1,8 @@
 package User;
 
 public class OrderOptions {
-    public static void submitOrder(User user, Basket basket){
+    public static void submitOrder(User user){
         new Order(user);
-        BasketOption.clearBasket(basket);
     }
 
     public static void payForTheOrder(Long orderID){
@@ -23,7 +22,7 @@ public class OrderOptions {
         Order order = OrderData.getOrderById(orderID);
         if(!(order.getStatus().equals("paid")) || !(order.getStatus().equals("sent"))){
             Basket basket = BasketData.getBasketById(order.getUser().getBasket().getId());
-            basket.setProductSet(order.getProductSet());
+            basket.setProductSet(order.getOrderProductSet());
         }
     }
 }

@@ -24,7 +24,7 @@ public abstract class Product {
     private int quantity;
     @ManyToMany(mappedBy = "productSet", fetch = FetchType.EAGER)
     private Set<Basket> basketSet = new HashSet<Basket>();
-    @ManyToMany(mappedBy = "productSet", fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "orderProductSet", fetch = FetchType.EAGER)
     private Set<Order> orderSet = new HashSet<Order>();
 
     public Product(){}

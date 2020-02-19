@@ -14,7 +14,9 @@ public class OrderData {
 
     public static void removeOrder(Long id){
         Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
         session.remove(getOrderById(id));
+        session.getTransaction().commit();
         session.close();
     }
 
@@ -27,7 +29,9 @@ public class OrderData {
 
     public static void updateOrder(Order order){
         Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
         session.update(order);
+        session.getTransaction().commit();
         session.close();
     }
 }

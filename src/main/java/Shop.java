@@ -17,13 +17,13 @@ public class Shop {
         //UserData.removeUser(user.getID());
         BasketOption.addProductToBasket(user.getBasket(), product1);
         BasketOption.addProductToBasket(user.getBasket(), product2);
-        //BasketOption.addProductToBasket(user.getBasket(), product3);
+        BasketOption.addProductToBasket(user.getBasket(), product3);
         //BasketOption.showBasket(user.getID());
-        BasketOption.removeProductFromBasket(user.getBasket(), product1);
+        //BasketOption.removeProductFromBasket(user.getBasket(), product1);
         //BasketOption.clearBasket(user.getBasket());
         //BasketOption.showBasket(user.getID());
 //        OrderOptions.payForTheOrder(user.getBasket().getId());
 //        BasketOption.showBasket(user.getBasket());
-
+        OrderOptions.submitOrder(user);
     }
 }
